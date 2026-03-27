@@ -233,25 +233,42 @@ export default function Home() {
             </p>
           ) : null}
 
-          <p
+          <div
             style={{
-              margin: 0,
-              fontSize: "15px",
-              color: "#e2e8f0",
+              marginTop: "6px",
+              display: "grid",
+              gap: "10px",
+              justifyItems: "center",
             }}
           >
-            Are you a bartender or service professional?{" "}
+            <p
+              style={{
+                margin: 0,
+                fontSize: "15px",
+                color: "#e2e8f0",
+              }}
+            >
+              Are you a bartender or service professional?
+            </p>
+
             <a
               href="/pros"
               style={{
-                color: "#bbf7d0",
+                display: "inline-block",
+                padding: "12px 20px",
+                borderRadius: "999px",
+                background: "#bbf7d0",
+                color: "#082f49",
                 textDecoration: "none",
                 fontWeight: 800,
+                fontSize: "15px",
+                boxShadow: "0 10px 24px rgba(187,247,208,0.24)",
+                border: "1px solid rgba(255,255,255,0.16)",
               }}
             >
-              See what PeepLink is building for you →
+              For Service Pros →
             </a>
-          </p>
+          </div>
         </form>
 
         <div style={{ marginTop: "28px" }}>
