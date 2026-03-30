@@ -1,12 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [referredBy, setReferredBy] = useState("");
+  const [userType, setUserType] = useState<"customer" | "service-pro">("customer");
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const [showCelebration, setShowCelebration] = useState(false);
+
+  useEffect(() => {
+    if (status === "success") {
+      setShowCelebration(true);
+      const timer = setTimeout(() => setShowCelebration(false), 2600);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -21,8 +32,10 @@ export default function Home() {
           Accept: "application/json",
         },
         body: JSON.stringify({
+          name,
           email,
           referredBy,
+          userType,
           _subject: "New PeepLink beta signup",
           source: "beta-landing",
         }),
@@ -32,9 +45,11 @@ export default function Home() {
 
       if (res.ok) {
         setStatus("success");
-        setMessage("Thanks! You're on the beta list.");
+        setMessage("You're on the beta list. Watch for an email soon with early access details.");
+        setName("");
         setEmail("");
         setReferredBy("");
+        setUserType("customer");
       } else {
         setStatus("error");
         setMessage(data?.errors?.[0]?.message || "Submission failed. Please try again.");
@@ -54,8 +69,62 @@ export default function Home() {
         color: "white",
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+        position: "relative",
+        overflow: "hidden",
       }}
     >
+      {showCelebration && (
+        <div
+          style={{
+            pointerEvents: "none",
+            position: "fixed",
+            inset: 0,
+            zIndex: 50,
+          }}
+        >
+          {Array.from({ length: 24 }).map((_, i) => {
+            const left = 8 + ((i * 37) % 84);
+            const top = 10 + ((i * 19) % 42);
+            const size = 8 + ((i * 7) % 12);
+            const delay = (i % 8) * 0.08;
+            const colors = ["#22D3EE", "#BBF7D0", "#FDE68A", "#FFFFFF"];
+            return (
+              <span
+                key={i}
+                style={{
+                  position: "absolute",
+                  left: `${left}%`,
+                  top: `${top}%`,
+                  width: `${size}px`,
+                  height: `${size}px`,
+                  borderRadius: "999px",
+                  background: colors[i % colors.length],
+                  boxShadow: `0 0 18px ${colors[i % colors.length]}`,
+                  animation: `popBurst 1.1s ease-out ${delay}s forwards`,
+                  opacity: 0,
+                }}
+              />
+            );
+          })}
+
+          <style>{`
+            @keyframes popBurst {
+              0% {
+                transform: translateY(0) scale(0.4);
+                opacity: 0;
+              }
+              20% {
+                opacity: 1;
+              }
+              100% {
+                transform: translateY(-110px) scale(1.15);
+                opacity: 0;
+              }
+            }
+          `}</style>
+        </div>
+      )}
+
       <section
         style={{
           maxWidth: "1080px",
@@ -154,6 +223,25 @@ export default function Home() {
             }}
           >
             <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "15px 16px",
+                borderRadius: "12px",
+                border: "1px solid #cbd5e1",
+                background: "white",
+                color: "#0f172a",
+                fontSize: "16px",
+                boxSizing: "border-box",
+              }}
+            />
+
+            <input
               type="email"
               name="email"
               placeholder="Email address"
@@ -171,24 +259,88 @@ export default function Home() {
                 boxSizing: "border-box",
               }}
             />
+          </div>
 
-            <input
-              type="text"
-              name="referredBy"
-              placeholder="Referred By"
-              value={referredBy}
-              onChange={(e) => setReferredBy(e.target.value)}
+          <input
+            type="text"
+            name="referredBy"
+            placeholder="Referred By"
+            value={referredBy}
+            onChange={(e) => setReferredBy(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "15px 16px",
+              borderRadius: "12px",
+              border: "1px solid #cbd5e1",
+              background: "white",
+              color: "#0f172a",
+              fontSize: "16px",
+              boxSizing: "border-box",
+            }}
+          />
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: "12px",
+              padding: "4px 0 2px",
+            }}
+          >
+            <label
               style={{
-                width: "100%",
-                padding: "15px 16px",
-                borderRadius: "12px",
-                border: "1px solid #cbd5e1",
-                background: "white",
-                color: "#0f172a",
-                fontSize: "16px",
-                boxSizing: "border-box",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "10px 14px",
+                borderRadius: "999px",
+                background:
+                  userType === "customer"
+                    ? "rgba(255,255,255,0.16)"
+                    : "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.14)",
+                color: "#e2e8f0",
+                cursor: "pointer",
+                fontWeight: 700,
+                fontSize: "14px",
               }}
-            />
+            >
+              <input
+                type="radio"
+                name="userType"
+                checked={userType === "customer"}
+                onChange={() => setUserType("customer")}
+              />
+              I’m a customer
+            </label>
+
+            <label
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "10px 14px",
+                borderRadius: "999px",
+                background:
+                  userType === "service-pro"
+                    ? "rgba(187,247,208,0.18)"
+                    : "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.14)",
+                color: "#e2e8f0",
+                cursor: "pointer",
+                fontWeight: 700,
+                fontSize: "14px",
+              }}
+            >
+              <input
+                type="radio"
+                name="userType"
+                checked={userType === "service-pro"}
+                onChange={() => setUserType("service-pro")}
+              />
+              I’m a service pro
+            </label>
           </div>
 
           <button
@@ -221,16 +373,42 @@ export default function Home() {
           </p>
 
           {message ? (
-            <p
+            <div
               style={{
-                margin: 0,
-                fontSize: "15px",
-                color: status === "success" ? "#bbf7d0" : "#fecaca",
-                fontWeight: 700,
+                marginTop: "4px",
+                padding: "14px 16px",
+                borderRadius: "16px",
+                background:
+                  status === "success"
+                    ? "rgba(187,247,208,0.16)"
+                    : "rgba(254,202,202,0.14)",
+                border:
+                  status === "success"
+                    ? "1px solid rgba(187,247,208,0.28)"
+                    : "1px solid rgba(254,202,202,0.24)",
               }}
             >
-              {message}
-            </p>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "18px",
+                  color: status === "success" ? "#dcfce7" : "#fecaca",
+                  fontWeight: 800,
+                }}
+              >
+                {status === "success" ? "🎉 You're in!" : "Something went wrong"}
+              </p>
+              <p
+                style={{
+                  margin: "6px 0 0",
+                  fontSize: "15px",
+                  color: "#e2e8f0",
+                  lineHeight: 1.5,
+                }}
+              >
+                {message}
+              </p>
+            </div>
           ) : null}
 
           <div
