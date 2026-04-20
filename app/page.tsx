@@ -448,8 +448,7 @@ export default function Home() {
              
             </a>
           </div>
-        </form>
- <div style={{ marginTop: "14px", textAlign: "center" }}>
+          <div style={{ marginTop: "14px", textAlign: "center" }}>
   <a
     href="/privacy"
     style={{
@@ -462,6 +461,8 @@ export default function Home() {
     Privacy Policy
   </a>
 </div>
+        </form>
+ 
         <div style={{ marginTop: "28px" }}>
           <img
             src="/images/qr.png"
