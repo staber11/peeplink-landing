@@ -445,7 +445,11 @@ export default function Home() {
               }}
             >
               For Service Pros →
-              <div style={{ marginTop: "14px", textAlign: "center" }}>
+             
+            </a>
+          </div>
+        </form>
+ <div style={{ marginTop: "14px", textAlign: "center" }}>
   <a
     href="/privacy"
     style={{
@@ -458,10 +462,6 @@ export default function Home() {
     Privacy Policy
   </a>
 </div>
-            </a>
-          </div>
-        </form>
-
         <div style={{ marginTop: "28px" }}>
           <img
             src="/images/qr.png"
