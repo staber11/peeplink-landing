@@ -445,6 +445,19 @@ export default function Home() {
               }}
             >
               For Service Pros →
+              <div style={{ marginTop: "14px", textAlign: "center" }}>
+  <a
+    href="/privacy"
+    style={{
+      color: "rgba(255, 255, 255, 0.82)",
+      fontSize: "14px",
+      fontWeight: 700,
+      textDecoration: "none",
+    }}
+  >
+    Privacy Policy
+  </a>
+</div>
             </a>
           </div>
         </form>
@@ -462,19 +475,7 @@ export default function Home() {
           />
         </div>
       </section>
-<div style={{ marginTop: "14px", textAlign: "center" }}>
-  <a
-    href="/privacy"
-    style={{
-      color: "rgba(255, 255, 255, 0.82)",
-      fontSize: "14px",
-      fontWeight: 700,
-      textDecoration: "none",
-    }}
-  >
-    Privacy Policy
-  </a>
-</div>
+
       <section
         style={{
           maxWidth: "1180px",
