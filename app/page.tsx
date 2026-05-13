@@ -448,19 +448,59 @@ export default function Home() {
              
             </a>
           </div>
-          <div style={{ marginTop: "14px", textAlign: "center" }}>
-  <a
-    href="/privacy"
-    style={{
-      color: "rgba(255, 255, 255, 0.82)",
-      fontSize: "14px",
-      fontWeight: 700,
-      textDecoration: "none",
-    }}
-  >
-    Privacy Policy
-  </a>
-</div>
+          <div
+
+            style={{
+
+              marginTop: "14px",
+
+              display: "flex",
+
+              justifyContent: "center",
+
+              gap: "18px",
+
+              flexWrap: "wrap",
+
+            }}
+
+          >
+
+            {[
+
+              { href: "/privacy", label: "Privacy Policy" },
+
+              { href: "/terms", label: "Terms of Use" },
+
+            ].map((link) => (
+
+              <a
+
+                key={link.href}
+
+                href={link.href}
+
+                style={{
+
+                  color: "rgba(255, 255, 255, 0.82)",
+
+                  fontSize: "14px",
+
+                  fontWeight: 700,
+
+                  textDecoration: "none",
+
+                }}
+
+              >
+
+                {link.label}
+
+              </a>
+
+            ))}
+
+          </div>
         </form>
  
         <div style={{ marginTop: "28px" }}>
