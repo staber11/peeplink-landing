@@ -116,12 +116,17 @@ export default function SupportPage() {
             PeepLink Support
           </p>
 
-          <h1 style={h1Style}>Support & Beta Feedback</h1>
+          <h1 style={h1Style}>PeepLink Support</h1>
+
+          <p style={paragraphStyle}>
+            For questions, account help, safety concerns, reports, or app
+            support, contact us at support@peeplinkapp.com.
+          </p>
 
           <p style={paragraphStyle}>
             Need help with PeepLink? Use this page for app support, beta
             feedback, safety concerns, account questions, and profile or venue
-            corrections.
+            corrections. You do not need to sign in to contact support.
           </p>
 
           <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
@@ -169,13 +174,13 @@ export default function SupportPage() {
             <div style={miniCardStyle}>
               <h2 style={h2Style}>Common topics</h2>
               <ul style={listStyle}>
-                <li>Sign in or Sign in with Apple</li>
+                <li>Account help</li>
+                <li>Invite and claim profile help</li>
+                <li>Reporting or blocking users</li>
+                <li>Deleting an account</li>
+                <li>General support</li>
                 <li>Beta bugs and feedback</li>
-                <li>Reporting objectionable content</li>
-                <li>Blocking another user</li>
                 <li>Profile, category, or venue corrections</li>
-                <li>Invite or claim-profile issues</li>
-                <li>Privacy and account deletion questions</li>
               </ul>
             </div>
           </section>
@@ -230,7 +235,7 @@ export default function SupportPage() {
               flexWrap: "wrap",
             }}
           >
-            <Link href="/privacy" style={linkStyle}>
+            <Link href="https://peeplinkapp.com/privacy" style={linkStyle}>
               Privacy Policy
             </Link>
             <Link href="/terms" style={linkStyle}>

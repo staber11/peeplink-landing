@@ -472,6 +472,8 @@ export default function Home() {
 
               { href: "/terms", label: "Terms of Use" },
 
+              { href: "/support", label: "Support" },
+
             ].map((link) => (
 
               <a
