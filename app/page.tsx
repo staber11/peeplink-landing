@@ -369,6 +369,18 @@ export default function Home() {
             </label>
           </div>
 
+          <p
+            style={{
+              margin: "2px 0 0",
+              fontSize: "15px",
+              color: "#dbeafe",
+              lineHeight: 1.5,
+            }}
+          >
+            <strong style={{ color: "#f8fafc" }}>New Users:</strong> join the
+            invite list if you still need beta approval.
+          </p>
+
           <button
             type="submit"
             disabled={status === "sending"}
@@ -385,8 +397,20 @@ export default function Home() {
               boxShadow: "0 10px 26px rgba(34,211,238,0.28)",
             }}
           >
-            {status === "sending" ? "Submitting..." : "Join the Beta"}
+            {status === "sending" ? "Submitting..." : "New Users: Join the Beta"}
           </button>
+
+          <p
+            style={{
+              margin: "2px 0 0",
+              fontSize: "15px",
+              color: "#dbeafe",
+              lineHeight: 1.5,
+            }}
+          >
+            <strong style={{ color: "#f8fafc" }}>Approved Testers:</strong> use
+            the beta install page after you receive a TestFlight invitation.
+          </p>
 
           <a
             href="/beta"
@@ -406,7 +430,7 @@ export default function Home() {
               boxSizing: "border-box",
             }}
           >
-            Download the PeepLink Beta
+            Approved Testers: Download the Beta
           </a>
 
           <p
