@@ -388,6 +388,27 @@ export default function Home() {
             {status === "sending" ? "Submitting..." : "Join the Beta"}
           </button>
 
+          <a
+            href="/beta"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              minHeight: "48px",
+              padding: "13px 20px",
+              borderRadius: "12px",
+              background: "rgba(255, 255, 255, 0.12)",
+              border: "1px solid rgba(255, 255, 255, 0.18)",
+              color: "#e0f2fe",
+              fontSize: "16px",
+              fontWeight: 800,
+              textDecoration: "none",
+              boxSizing: "border-box",
+            }}
+          >
+            Download the PeepLink Beta
+          </a>
+
           <p
             style={{
               margin: 0,
