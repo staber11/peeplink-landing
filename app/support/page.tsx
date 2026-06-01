@@ -45,6 +45,14 @@ const miniCardStyle: CSSProperties = {
   padding: "18px",
 };
 
+const contactCardStyle: CSSProperties = {
+  background: "rgba(34, 211, 238, 0.14)",
+  border: "1px solid rgba(103, 232, 249, 0.34)",
+  borderRadius: "22px",
+  padding: "22px",
+  margin: "22px 0",
+};
+
 const h1Style: CSSProperties = {
   fontSize: "clamp(36px, 7vw, 62px)",
   lineHeight: 1,
@@ -118,6 +126,25 @@ export default function SupportPage() {
 
           <h1 style={h1Style}>PeepLink Support</h1>
 
+          <section style={contactCardStyle} aria-labelledby="contact-support">
+            <h2 id="contact-support" style={h2Style}>
+              Contact PeepLink Support
+            </h2>
+            <p style={{ ...paragraphStyle, fontWeight: 900, color: "white" }}>
+              Email:{" "}
+              <a href="mailto:support@peeplinkapp.com" style={linkStyle}>
+                support@peeplinkapp.com
+              </a>
+            </p>
+            <p style={paragraphStyle}>
+              For questions, account help, safety concerns, reports, or app
+              support, contact us at support@peeplinkapp.com.
+            </p>
+            <p style={paragraphStyle}>
+              Most support requests receive a response within 1–2 business days.
+            </p>
+          </section>
+
           <p style={paragraphStyle}>
             For questions, account help, safety concerns, reports, or app
             support, contact us at support@peeplinkapp.com.
@@ -177,9 +204,10 @@ export default function SupportPage() {
                 <li>Account help</li>
                 <li>Invite and claim profile help</li>
                 <li>Reporting or blocking users</li>
-                <li>Deleting an account</li>
+                <li>Account deletion</li>
                 <li>General support</li>
-                <li>Beta bugs and feedback</li>
+                <li>Safety and abuse reporting</li>
+                <li>Beta feedback</li>
                 <li>Profile, category, or venue corrections</li>
               </ul>
             </div>
@@ -191,7 +219,7 @@ export default function SupportPage() {
 
           <section style={gridStyle}>
             <div style={miniCardStyle}>
-              <h2 style={h2Style}>Safety and abuse</h2>
+              <h2 style={h2Style}>Safety and abuse reporting</h2>
               <p style={paragraphStyle}>
                 To report objectionable content or abusive behavior, use the
                 in-app Report or Block controls when possible. Those controls

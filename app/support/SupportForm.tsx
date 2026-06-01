@@ -117,7 +117,7 @@ export default function SupportForm() {
       }}
     >
       <h2 style={{ fontSize: "26px", margin: "0 0 10px" }}>
-        Send a message
+        Contact PeepLink Support
       </h2>
       <p style={paragraphStyle}>
         Use this form for beta feedback, bug reports, account support, and

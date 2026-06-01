@@ -10,6 +10,32 @@ export default function Home() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
   const [showCelebration, setShowCelebration] = useState(false);
+  const appScreenshots = [
+    {
+      src: "/images/app-store/search-venues.png",
+      alt: "PeepLink Search tab showing venue results",
+    },
+    {
+      src: "/images/app-store/map-venue-discovery.png",
+      alt: "PeepLink Map tab showing venue discovery",
+    },
+    {
+      src: "/images/app-store/invite-check-in.png",
+      alt: "PeepLink Invite tab showing invite and check-in options",
+    },
+    {
+      src: "/images/app-store/following-professional.png",
+      alt: "PeepLink Following tab showing a followed professional",
+    },
+    {
+      src: "/images/app-store/account-profile-management.png",
+      alt: "PeepLink Account tab showing profile management",
+    },
+    {
+      src: "/images/app-store/check-in-status.png",
+      alt: "PeepLink Check In screen showing current status",
+    },
+  ];
 
   useEffect(() => {
     if (status === "success") {
@@ -534,32 +560,32 @@ export default function Home() {
             fontWeight: 800,
           }}
         >
-          See How It Works
+          Current PeepLink Screens
         </h2>
 
         <div
           style={{
             display: "flex",
             gap: "22px",
-            overflowX: "auto",
+            flexWrap: "wrap",
             paddingBottom: "10px",
-            justifyContent: "flex-start",
+            justifyContent: "center",
+            alignItems: "flex-start",
           }}
         >
-          {["/images/s1.png", "/images/s3.png", "/images/s5.png"].map(
-            (src, i) => (
+          {appScreenshots.map((screenshot) => (
               <img
-                key={src}
-                src={src}
-                alt={`PeepLink screenshot ${i + 1}`}
+                key={screenshot.src}
+                src={screenshot.src}
+                alt={screenshot.alt}
                 style={{
-                  height: "540px",
+                  width: "min(100%, 250px)",
+                  height: "auto",
                   borderRadius: "26px",
                   boxShadow: "0 18px 40px rgba(15, 23, 42, 0.28)",
                 }}
               />
-            )
-          )}
+            ))}
         </div>
       </section>
 
