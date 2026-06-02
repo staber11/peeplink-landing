@@ -380,8 +380,11 @@ export default function BetaGuidePage() {
           </p>
 
           <div style={buttonRowStyle}>
-            <Link href="/beta" style={primaryButtonStyle}>
+            <Link href="/download" style={primaryButtonStyle}>
               Download the PeepLink Beta
+            </Link>
+            <Link href="/beta" style={secondaryButtonStyle}>
+              Beta Overview
             </Link>
             <a href={supportEmail} style={secondaryButtonStyle}>
               Email Beta Support
@@ -437,11 +440,17 @@ export default function BetaGuidePage() {
             most useful path.
           </p>
           <div style={buttonRowStyle}>
-            <Link href="/beta" style={primaryButtonStyle}>
-              Beta Install Page
+            <Link href="/download" style={primaryButtonStyle}>
+              Download Page
+            </Link>
+            <Link href="/beta" style={secondaryButtonStyle}>
+              Beta Overview
             </Link>
             <Link href="/support" style={secondaryButtonStyle}>
               Support Page
+            </Link>
+            <Link href="/privacy" style={secondaryButtonStyle}>
+              Privacy Policy
             </Link>
             <Link href="/terms" style={secondaryButtonStyle}>
               Terms of Use

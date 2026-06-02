@@ -7,14 +7,12 @@ export const metadata = {
     "Install the PeepLink beta through Apple TestFlight and start testing core discovery features.",
 };
 
-const testFlightUrl =
-  process.env.NEXT_PUBLIC_TESTFLIGHT_URL ||
-  "https://testflight.apple.com/join/REPLACE_ME";
-
-const isPlaceholderLink = testFlightUrl.includes("REPLACE_ME");
-const betaDownloadHref = isPlaceholderLink
-  ? "#installing-through-testflight"
-  : testFlightUrl;
+// TODO: Replace with Apple's public PeepLink TestFlight URL after approval.
+const PUBLIC_TESTFLIGHT_URL = "";
+const hasPublicTestFlightUrl = PUBLIC_TESTFLIGHT_URL.length > 0;
+const installPeepLinkHref = hasPublicTestFlightUrl
+  ? PUBLIC_TESTFLIGHT_URL
+  : "/download#public-testflight-link";
 
 const feedbackEmail =
   "mailto:support@peeplinkapp.com?subject=PeepLink%20Beta%20Help";
@@ -324,10 +322,22 @@ export default function BetaAccessPage() {
             tied to venues.
           </p>
 
+          <p
+            style={{
+              ...paragraphStyle,
+              maxWidth: "780px",
+              color: "#dbeafe",
+            }}
+          >
+            QR codes, social links, and beta emails should point to the permanent
+            PeepLink download page so testers always get the right install
+            steps.
+          </p>
+
           <div style={buttonRowStyle}>
-            <a href={betaDownloadHref} style={primaryButtonStyle}>
+            <Link href="/download" style={primaryButtonStyle}>
               Download PeepLink Beta
-            </a>
+            </Link>
             <Link href="/beta-guide" style={secondaryButtonStyle}>
               Read the Beta Tester Guide
             </Link>
@@ -335,25 +345,6 @@ export default function BetaAccessPage() {
               Email Support
             </a>
           </div>
-
-          {isPlaceholderLink ? (
-            <div
-              style={{
-                marginTop: "18px",
-                padding: "16px 18px",
-                borderRadius: "18px",
-                background: "rgba(251, 191, 36, 0.14)",
-                border: "1px solid rgba(251, 191, 36, 0.32)",
-                color: "#fef3c7",
-                fontWeight: 800,
-                lineHeight: 1.55,
-              }}
-            >
-              If you received a private TestFlight invitation, open that
-              original invite from your iPhone. The direct beta download link
-              will work once the public TestFlight link is configured.
-            </div>
-          ) : null}
         </div>
 
         <section style={gridStyle}>
@@ -389,14 +380,35 @@ export default function BetaAccessPage() {
               href="https://apps.apple.com/app/testflight/id899247664"
               style={secondaryButtonStyle}
             >
-              Download TestFlight from Apple
+              <span
+                aria-hidden="true"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "10px",
+                  background: "rgba(34, 211, 238, 0.24)",
+                  color: "#a5f3fc",
+                  fontSize: "12px",
+                  fontWeight: 900,
+                  marginRight: "10px",
+                }}
+              >
+                TF
+              </span>
+              Get TestFlight
             </a>
-            {isPlaceholderLink ? null : (
-              <a href={testFlightUrl} style={primaryButtonStyle}>
-                Open PeepLink TestFlight Invite
-              </a>
-            )}
+            <a href={installPeepLinkHref} style={primaryButtonStyle}>
+              Install PeepLink Beta
+            </a>
           </div>
+          <p style={{ ...paragraphStyle, marginTop: "14px" }}>
+            TestFlight is Apple&apos;s official beta testing app. The PeepLink
+            install button will point to the public TestFlight link after that
+            link is available.
+          </p>
         </section>
 
         <section style={{ ...cardStyle, marginTop: "22px" }}>

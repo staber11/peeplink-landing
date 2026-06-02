@@ -369,16 +369,66 @@ export default function Home() {
             </label>
           </div>
 
+          <div
+            style={{
+              display: "grid",
+              gap: "8px",
+              padding: "4px 0",
+            }}
+          >
+            <p
+              style={{
+                margin: 0,
+                fontSize: "19px",
+                color: "#f8fafc",
+                fontWeight: 900,
+              }}
+            >
+              Download the PeepLink Beta
+            </p>
+            <p
+              style={{
+                margin: 0,
+                fontSize: "15px",
+                color: "#dbeafe",
+                lineHeight: 1.5,
+              }}
+            >
+              Join PeepLink through Apple&apos;s TestFlight beta program.
+            </p>
+          </div>
+
+          <a
+            href="/download"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              minHeight: "54px",
+              padding: "15px 22px",
+              borderRadius: "12px",
+              background: "#bbf7d0",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              color: "#052e16",
+              fontSize: "17px",
+              fontWeight: 900,
+              textDecoration: "none",
+              boxSizing: "border-box",
+              boxShadow: "0 14px 34px rgba(187,247,208,0.26)",
+            }}
+          >
+            Download PeepLink Beta
+          </a>
+
           <p
             style={{
               margin: "2px 0 0",
-              fontSize: "15px",
+              fontSize: "14px",
               color: "#dbeafe",
               lineHeight: 1.5,
             }}
           >
-            <strong style={{ color: "#f8fafc" }}>New Users:</strong> join the
-            invite list if you still need beta approval.
+            Want updates? Join the PeepLink email list.
           </p>
 
           <button
@@ -397,41 +447,8 @@ export default function Home() {
               boxShadow: "0 10px 26px rgba(34,211,238,0.28)",
             }}
           >
-            {status === "sending" ? "Submitting..." : "New Users: Join the Beta"}
+            {status === "sending" ? "Submitting..." : "Join Email List"}
           </button>
-
-          <p
-            style={{
-              margin: "2px 0 0",
-              fontSize: "15px",
-              color: "#dbeafe",
-              lineHeight: 1.5,
-            }}
-          >
-            <strong style={{ color: "#f8fafc" }}>Approved Testers:</strong> use
-            the beta install page after you receive a TestFlight invitation.
-          </p>
-
-          <a
-            href="/beta"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              minHeight: "48px",
-              padding: "13px 20px",
-              borderRadius: "12px",
-              background: "rgba(255, 255, 255, 0.12)",
-              border: "1px solid rgba(255, 255, 255, 0.18)",
-              color: "#e0f2fe",
-              fontSize: "16px",
-              fontWeight: 800,
-              textDecoration: "none",
-              boxSizing: "border-box",
-            }}
-          >
-            Approved Testers: Download the Beta
-          </a>
 
           <p
             style={{
